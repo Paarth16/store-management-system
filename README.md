@@ -45,26 +45,26 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 
 ## 🛠️ Technologies Used
 
--Backend: Python, Flask
--Frontend: HTML5, Bootstrap 5
--Database: MySQL (via PyMySQL)
--Tools: MySQL Workbench, VS Code
+- Backend: Python, Flask
+- Frontend: HTML5, Bootstrap 5
+- Database: MySQL (via PyMySQL)
+- Tools: MySQL Workbench, VS Code
 
 ---
 
 ## 💽 Database Structure
 
 Tables
--employee: Employee details and login credentials
--inventory: Product stock data
--cart: Temporarily holds items during billing
--customer: Stores customer info
--receipt: Records finalized transactions
+- employee: Employee details and login credentials
+- inventory: Product stock data
+- cart: Temporarily holds items during billing
+- customer: Stores customer info
+- receipt: Records finalized transactions
 
 
 For schema:
--Use Store_Structure.sql to import the full schema
--Or run Create tables.py to create tables programmatically
+- Use Store_Structure.sql to import the full schema
+- Or run Create tables.py to create tables programmatically
 
 ---
 
@@ -77,10 +77,10 @@ For schema:
   pip install flask pymysql
 
 3. Setup MySQL:
--Open MySQL Workbench
-  -Run Store_Structure.sql 
+- Open MySQL Workbench
+  - Run Store_Structure.sql 
   OR
--Run Create tables.py
+- Run Create tables.py
 
 4. Run the Flask app
   python app.py
