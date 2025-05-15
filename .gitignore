@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+
+# Environment variables or secrets
+.env
+
+# Spyder IDE
+.spyderproject
+.spyproject
+.ipynb_checkpoints/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
