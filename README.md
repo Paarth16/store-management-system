@@ -88,11 +88,11 @@ For schema:
 5. Access the app
   Navigate to http://localhost:5000 in your browser.
 
-##🧪 Default Login for Testing
+## 🧪 Default Login for Testing
 Use any employee record from your database.
-  -Username: Mobile Number
-  -Password: Date of Birth (YYYY-MM-DD)
+  - Username: Mobile Number
+  - Password: Date of Birth (YYYY-MM-DD)
 
-##📌 Author
+## 📌 Author
 Developed by Paarth Sharma
 GitHub: @Paarth16
