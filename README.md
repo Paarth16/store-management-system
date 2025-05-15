@@ -1,10 +1,10 @@
-🛒 Store Management System
+# 🛒 Store Management System
 
 A web-based store management system built with **Flask**, **MySQL**, and **Bootstrap**. It handles employee and inventory management, billing operations, customer receipts, and tracks sales efficiently with a clear and intuitive interface.
 
 ---
 
-🚀 Features
+## 🚀 Features
 
 - 🔐 **Employee Login** (with role-based redirection: manager or staff)
 - 👨‍💼 **Employee Management** (Add, Edit, Delete, Search)
@@ -21,8 +21,8 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 
 ---
 
-🗂️ Project Structure
-
+## 🗂️ Project Structure
+```plaintext
 .
 ├── app.py                  # Main Flask application
 ├── Create tables.py        # Script to create database tables
@@ -40,49 +40,47 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
     ├── billing.html
     ├── checkout.html
     └── receipt.html
+```
+---
+
+## 🛠️ Technologies Used
+
+- Backend: Python, Flask
+- Frontend: HTML5, Bootstrap 5
+- Database: MySQL (via PyMySQL)
+- Tools: MySQL Workbench, VS Code
 
 ---
 
-🛠️ Technologies Used
+## 💽 Database Structure
 
--Backend: Python, Flask
-
--Frontend: HTML5, Bootstrap 5
-
--Database: MySQL (via PyMySQL)
-
--Tools: MySQL Workbench, VS Code
-
----
-
-💽 Database Structure
-Tables:
--employee: Employee details and login credentials
--inventory: Product stock data
--cart: Temporarily holds items during billing
--customer: Stores customer info
--receipt: Records finalized transactions
+Tables
+- employee: Employee details and login credentials
+- inventory: Product stock data
+- cart: Temporarily holds items during billing
+- customer: Stores customer info
+- receipt: Records finalized transactions
 
 
 For schema:
--Use Store_Structure.sql to import the full schema
--Or run Create tables.py to create tables programmatically
+- Use Store_Structure.sql to import the full schema
+- Or run Create tables.py to create tables programmatically
 
 ---
 
-⚙️ Setup Instructions
+## ⚙️ Setup Instructions
 1. Clone the repo
-  git clone https://github.com/yourusername/store-management-system.git
+  git clone https://github.com/Paarth16/store-management-system.git
   cd store-management-system
 
 2. Install dependencies
   pip install flask pymysql
 
-3. Setup MySQL
--Open MySQL Workbench
-  -Run Store_Structure.sql 
+3. Setup MySQL:
+- Open MySQL Workbench
+  - Run Store_Structure.sql 
   OR
--Run Create tables.py
+- Run Create tables.py
 
 4. Run the Flask app
   python app.py
@@ -90,11 +88,11 @@ For schema:
 5. Access the app
   Navigate to http://localhost:5000 in your browser.
 
-🧪 Default Login for Testing
+## 🧪 Default Login for Testing
 Use any employee record from your database.
-  -Username: Mobile Number
-  -Password: Date of Birth (YYYY-MM-DD)
+  - Username: Mobile Number
+  - Password: Date of Birth (YYYY-MM-DD)
 
-📌 Author
+## 📌 Author
 Developed by Paarth Sharma
 GitHub: @Paarth16
