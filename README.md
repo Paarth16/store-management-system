@@ -57,11 +57,11 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 
 💽 Database Structure
 Tables:
--employee: Employee details and login credentials
--inventory: Product stock data
--cart: Temporarily holds items during billing
--customer: Stores customer info
--receipt: Records finalized transactions
+  -employee: Employee details and login credentials
+  -inventory: Product stock data
+  -cart: Temporarily holds items during billing
+  -customer: Stores customer info
+  -receipt: Records finalized transactions
 
 
 For schema:
@@ -78,7 +78,7 @@ For schema:
 2. Install dependencies
   pip install flask pymysql
 
-3. Setup MySQL
+3. Setup MySQL:
 -Open MySQL Workbench
   -Run Store_Structure.sql 
   OR
