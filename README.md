@@ -1,10 +1,10 @@
-#🛒 Store Management System
+# 🛒 Store Management System
 
 A web-based store management system built with **Flask**, **MySQL**, and **Bootstrap**. It handles employee and inventory management, billing operations, customer receipts, and tracks sales efficiently with a clear and intuitive interface.
 
 ---
 
-##🚀 Features
+## 🚀 Features
 
 - 🔐 **Employee Login** (with role-based redirection: manager or staff)
 - 👨‍💼 **Employee Management** (Add, Edit, Delete, Search)
@@ -21,7 +21,7 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 
 ---
 
-##🗂️ Project Structure
+## 🗂️ Project Structure
 ```plaintext
 .
 ├── app.py                  # Main Flask application
@@ -43,19 +43,16 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 ```
 ---
 
-##🛠️ Technologies Used
+## 🛠️ Technologies Used
 
 -Backend: Python, Flask
-
 -Frontend: HTML5, Bootstrap 5
-
 -Database: MySQL (via PyMySQL)
-
 -Tools: MySQL Workbench, VS Code
 
 ---
 
-##💽 Database Structure
+## 💽 Database Structure
 
 Tables
 -employee: Employee details and login credentials
@@ -71,7 +68,7 @@ For schema:
 
 ---
 
-##⚙️ Setup Instructions
+## ⚙️ Setup Instructions
 1. Clone the repo
   git clone https://github.com/Paarth16/store-management-system.git
   cd store-management-system
