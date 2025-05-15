@@ -22,7 +22,7 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
 ---
 
 🗂️ Project Structure
-
+```plaintext
 .
 ├── app.py                  # Main Flask application
 ├── Create tables.py        # Script to create database tables
