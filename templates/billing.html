@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-dark bg-dark px-3">
+        <span class="navbar-brand">Billing</span>
+        <div class="text-white">
+            {{ session.get('username') }} (ID: {{ session.get('employee_id') }}) &nbsp;
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-light">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Search and Bill Table -->
+            <div class="col-md-9">
+                <input type="text" id="search" class="form-control mb-2" placeholder="Search product...">
+
+                <ul class="list-group position-absolute w-75" id="suggestions" style="z-index:1000;"></ul>
+
+                <table class="table table-bordered mt-4">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="bill-table">
+                        <!-- Items will appear here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Summary and Checkout -->
+            <div class="col-md-3">
+                <h4>Total: ₹<span id="grand-total">0</span></h4>
+                <button id="checkout-btn" class="btn btn-success w-100 mt-3" disabled>Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const allProducts = {{ products | tojson }};
+        const billItems = {};
+
+        const search = document.getElementById("search");
+        const suggestions = document.getElementById("suggestions");
+        const table = document.getElementById("bill-table");
+        const totalElem = document.getElementById("grand-total");
+        const checkoutBtn = document.getElementById("checkout-btn");
+
+        function renderSuggestions(filtered) {
+            suggestions.innerHTML = "";
+            filtered.forEach(p => {
+                const li = document.createElement("li");
+                li.className = "list-group-item list-group-item-action";
+                li.textContent = `${p.Product_ID} - ${p.Name} (${p.Brand})`;
+                li.onclick = () => addItem(p);
+                suggestions.appendChild(li);
+            });
+        }
+
+        function updateTotal() {
+            let total = 0;
+            Object.values(billItems).forEach(p => total += p.Price * p.Quantity);
+            totalElem.textContent = total.toFixed(2);
+            checkoutBtn.disabled = total === 0;
+        }
+
+        function addItem(product) {
+            if (billItems[product.Product_ID]) return;
+
+            product.Quantity = 1;
+            billItems[product.Product_ID] = product;
+
+            const row = table.insertRow();
+            row.setAttribute("data-id", product.Product_ID);
+            row.innerHTML = `
+                <td>${product.Product_ID}</td>
+                <td>${product.Name}</td>
+                <td>${product.Brand}</td>
+                <td>${product.Price}</td>
+                <td><input type="number" value="1" min="1" class="form-control qty-input"></td>
+                <td class="subtotal">${product.Price}</td>
+                <td><button class="btn btn-sm btn-danger">X</button></td>
+            `;
+
+            row.querySelector(".qty-input").addEventListener("input", (e) => {
+                let qty = parseInt(e.target.value);
+                if (qty < 1) qty = 1;
+                billItems[product.Product_ID].Quantity = qty;
+                row.querySelector(".subtotal").textContent = (product.Price * qty).toFixed(2);
+                updateTotal();
+            });
+
+            row.querySelector("button").addEventListener("click", () => {
+                delete billItems[product.Product_ID];
+                row.remove();
+                updateTotal();
+            });
+
+            updateTotal();
+            suggestions.innerHTML = "";
+            search.value = "";
+        }
+
+        search.addEventListener("input", () => {
+            const val = search.value.toLowerCase();
+            const matches = allProducts.filter(p =>
+                p.Name.toLowerCase().includes(val) ||
+                p.Brand.toLowerCase().includes(val) ||
+                p.Product_ID.toLowerCase().includes(val)
+            );
+            renderSuggestions(matches);
+        });
+
+        checkoutBtn.addEventListener("click", async () => {
+            const items = Object.values(billItems);
+            const response = await fetch("/billing", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items })
+            });
+
+            const result = await response.json();
+	    if (result.status === 'success') {
+    		window.location.href = "/checkout";
+	    } else {
+    		alert("Checkout failed!");
+	    }
+
+        });
+    </script>
+</body>
+</html>
