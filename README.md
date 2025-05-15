@@ -40,7 +40,7 @@ A web-based store management system built with **Flask**, **MySQL**, and **Boots
     ├── billing.html
     ├── checkout.html
     └── receipt.html
-
+```
 ---
 
 🛠️ Technologies Used
